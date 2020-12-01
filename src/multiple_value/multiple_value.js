@@ -5,7 +5,7 @@ import { ComparisonDataPoint } from './ComparisonDataPoint'
 import FontLoader from '../fonts/font-loader'
 
 const DataPointsWrapper = styled.div`
-  font-family: "Google Sans", "Roboto", "Noto Sans JP", "Noto Sans", "Noto Sans CJK KR", Helvetica, Arial, sans-serif;
+  font-family: "Google Sans", "Roboto", "Noto Sans", "Noto Sans Japanese", "Noto Sans CJK KR", Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: ${props => props.layout === 'horizontal' ? 'row' : 'column'};
   align-items: center;
