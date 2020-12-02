@@ -51,7 +51,7 @@ const DataPointTitle = styled.div`
 
 const DataPointValue = styled.div`
   font-size: 3em;
-  font-weight: 100;
+  font-weight: 400;
   color: ${props => props.color};
 
   a.drillable-link {
