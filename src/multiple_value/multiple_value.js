@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { ComparisonDataPoint } from './ComparisonDataPoint'
-import FontLoader from '../fonts/font-loader'
 
 const DataPointsWrapper = styled.div`
   font-family: "Google Sans", "Roboto", "Noto Sans JP", "Noto Sans", "Noto Sans CJK KR", Helvetica, Arial, sans-serif;
@@ -136,62 +135,59 @@ class MultipleValue extends React.PureComponent {
     const {config, data} = this.props;
 
     return (
-      <>
-        <FontLoader />
-        <DataPointsWrapper
-          layout={this.getLayout()}
-          font={config['grouping_font']}
-          style={{fontSize: `${this.state.fontSize}em`}}
-        >
-          {data
-            .map((dataPoint, index) => {
-              const compDataPoint = dataPoint.comparison
-              let progressPerc
-              let percChange
-              if (compDataPoint) {
-                progressPerc = Math.round((dataPoint.value / compDataPoint.value) * 100)
-                percChange = progressPerc - 100
+      <DataPointsWrapper
+        layout={this.getLayout()}
+        font={config['grouping_font']}
+        style={{fontSize: `${this.state.fontSize}em`}}
+      >
+        {data
+          .map((dataPoint, index) => {
+            const compDataPoint = dataPoint.comparison
+            let progressPerc
+            let percChange
+            if (compDataPoint) {
+              progressPerc = Math.round((dataPoint.value / compDataPoint.value) * 100)
+              percChange = progressPerc - 100
+            }
+            return (
+              <>
+              <DataPointGroup 
+                comparisonPlacement={compDataPoint && config[`comparison_label_placement_${compDataPoint.name}`]} 
+                key={`group_${dataPoint.name}`} 
+                layout={this.getLayout()}
+              >
+                <DataPoint titlePlacement={config[`title_placement_${dataPoint.name}`]}>
+                  {config[`show_title_${dataPoint.name}`] === false ? null : (
+                    <DataPointTitle color={config[`style_${dataPoint.name}`]}>
+                      {config[`title_override_${dataPoint.name}`] || dataPoint.label}
+                    </DataPointTitle>
+                  )}
+                  <DataPointValue 
+                    color={config[`style_${dataPoint.name}`]}
+                    onClick={() => { this.handleClick(dataPoint, event) }}
+                    layout={this.getLayout()}
+                  >
+                    {dataPoint.formattedValue}
+                  </DataPointValue>
+                </DataPoint>
+                {!compDataPoint ? null : (
+                <ComparisonDataPoint 
+                  config={config}
+                  compDataPoint={compDataPoint}
+                  dataPoint={dataPoint}
+                  percChange={percChange}
+                  progressPerc={progressPerc}
+                  handleClick={this.handleClick}
+                />)}
+              </DataPointGroup>
+              {config.dividers && config.orientation === 'horizontal' && index < (data.length - 1) &&
+              <Divider />
               }
-              return (
-                <>
-                <DataPointGroup 
-                  comparisonPlacement={compDataPoint && config[`comparison_label_placement_${compDataPoint.name}`]} 
-                  key={`group_${dataPoint.name}`} 
-                  layout={this.getLayout()}
-                >
-                  <DataPoint titlePlacement={config[`title_placement_${dataPoint.name}`]}>
-                    {config[`show_title_${dataPoint.name}`] === false ? null : (
-                      <DataPointTitle color={config[`style_${dataPoint.name}`]}>
-                        {config[`title_override_${dataPoint.name}`] || dataPoint.label}
-                      </DataPointTitle>
-                    )}
-                    <DataPointValue 
-                      color={config[`style_${dataPoint.name}`]}
-                      onClick={() => { this.handleClick(dataPoint, event) }}
-                      layout={this.getLayout()}
-                    >
-                      {dataPoint.formattedValue}
-                    </DataPointValue>
-                  </DataPoint>
-                  {!compDataPoint ? null : (
-                  <ComparisonDataPoint 
-                    config={config}
-                    compDataPoint={compDataPoint}
-                    dataPoint={dataPoint}
-                    percChange={percChange}
-                    progressPerc={progressPerc}
-                    handleClick={this.handleClick}
-                  />)}
-                </DataPointGroup>
-                {config.dividers && config.orientation === 'horizontal' && index < (data.length - 1) &&
-                <Divider />
-                }
-                </>
-              )
-            })
-          }
-        </DataPointsWrapper>
-      </>
+              </>
+            )
+          })
+        }
+      </DataPointsWrapper>
     )
 
   }

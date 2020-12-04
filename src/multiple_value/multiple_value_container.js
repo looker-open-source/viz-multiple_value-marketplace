@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import isEqual from 'lodash/isEqual'
 import MultipleValue from './multiple_value'
 import SSF from "ssf";
+import { ComponentsProvider } from '@looker/components'
 
 const baseOptions = {
   font_size_main: {
@@ -251,10 +252,12 @@ looker.plugins.visualizations.add({
     })
 
     this.chart = ReactDOM.render(
-      <MultipleValue
-        config={config}
-        data={fullValues}
-      />,
+      <ComponentsProvider loadGoogleFonts>
+        <MultipleValue
+          config={config}
+          data={fullValues}
+        />
+      </ComponentsProvider>,
       element
     );
     done()
