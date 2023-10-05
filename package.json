@@ -4,10 +4,11 @@
   "description": "",
   "main": "",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "prepare": "bin/bootstrap",
+    "build": "env NODE_OPTIONS='--openssl-legacy-provider' webpack --config webpack.config.js",
     "start": "webpack-dev-server --open",
-    "watch": "webpack-dev-server --watch --progress",
-    "format": "prettier --ignore-path .gitignore --write '**/*.js'",
+    "watch": "env NODE_OPTIONS='--openssl-legacy-provider' webpack-dev-server --watch --progress",
+    "format": "prettier --ignore-path .gitignore --write 'src/**/*.js'",
     "test": "jest"
   },
   "author": "Noah MacDonald <noahmac@google.com>",
@@ -35,6 +36,7 @@
     "jsdom": "^11.11.0",
     "lodash": "^4.17.19",
     "moment": "^2.24.0",
+    "prop-types": "^15.8.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-html-parser": "^2.0.2",
@@ -53,7 +55,7 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.7",
-    "jest": "^29.6.4",
+    "jest": "^29.7.0",
     "style-loader": "^2.0.0"
   }
 }
