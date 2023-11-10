@@ -1,7 +1,7 @@
 import React, { PureComponent, useState } from "react";
 import styled from 'styled-components'
 // @ts-ignore
-import {formatType, lighten} from '../common'
+import {formatType, lighten} from '../functions/common'
 import SSF from "ssf";
 
 let ComparisonDataPointGroup = styled.div`
