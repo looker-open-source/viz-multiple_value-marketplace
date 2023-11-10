@@ -1,8 +1,8 @@
-import numfmt from "numfmt";
+import numfmt from 'numfmt';
 import {
   LOCALE_NUMBER_FORMATS,
   LOCALE_TAGS,
-} from "../constants/locale_formats_tags";
+} from '../constants/locale_formats_tags';
 
 export function formatValue(format, value, localeFormat) {
   const formatter = numfmt(format);

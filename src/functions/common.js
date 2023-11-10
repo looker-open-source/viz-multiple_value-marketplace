@@ -1,38 +1,38 @@
-import React from "react";
-import * as d3 from "d3";
-import _ from "lodash";
+import React from 'react';
+import * as d3 from 'd3';
+import _ from 'lodash';
 
-export const formatType = (valueFormat) => {
-  if (typeof valueFormat != "string") {
+export const formatType = valueFormat => {
+  if (typeof valueFormat != 'string') {
     return function (x) {
       return x;
     };
   }
-  let format = "";
+  let format = '';
   switch (valueFormat.charAt(0)) {
-    case "$":
-      format += "$";
+    case '$':
+      format += '$';
       break;
-    case "£":
-      format += "£";
+    case '£':
+      format += '£';
       break;
-    case "€":
-      format += "€";
+    case '€':
+      format += '€';
       break;
   }
-  if (valueFormat.indexOf(",") > -1) {
-    format += ",";
+  if (valueFormat.indexOf(',') > -1) {
+    format += ',';
   }
-  const splitValueFormat = valueFormat.split(".");
-  format += ".";
+  const splitValueFormat = valueFormat.split('.');
+  format += '.';
   format += splitValueFormat.length > 1 ? splitValueFormat[1].length : 0;
 
   switch (valueFormat.slice(-1)) {
-    case "%":
-      format += "%";
+    case '%':
+      format += '%';
       break;
-    case "0":
-      format += "f";
+    case '0':
+      format += 'f';
       break;
   }
   return d3.format(format);
@@ -40,11 +40,11 @@ export const formatType = (valueFormat) => {
 
 export const handleErrors = (vis, resp, options) => {
   function messageFromLimits(min, max, field) {
-    let message = "You need " + min;
+    let message = 'You need ' + min;
     if (max) {
-      message += " to " + max;
+      message += ' to ' + max;
     }
-    message += " " + field;
+    message += ' ' + field;
     return message;
   }
 
@@ -54,17 +54,17 @@ export const handleErrors = (vis, resp, options) => {
   ) {
     let message;
     vis.addError({
-      group: "pivot-req",
-      title: "Incompatible Pivot Data",
+      group: 'pivot-req',
+      title: 'Incompatible Pivot Data',
       message: messageFromLimits(
         options.min_pivots,
         options.max_pivots,
-        "pivots"
+        'pivots'
       ),
     });
     return false;
   } else {
-    vis.clearErrors("pivot-req");
+    vis.clearErrors('pivot-req');
   }
 
   if (
@@ -72,17 +72,17 @@ export const handleErrors = (vis, resp, options) => {
     resp.fields.dimensions.length > options.max_dimensions
   ) {
     vis.addError({
-      group: "dim-req",
-      title: "Incompatible Dimension Data",
+      group: 'dim-req',
+      title: 'Incompatible Dimension Data',
       message: messageFromLimits(
         options.min_dimensions,
         options.max_dimensions,
-        "dimensions"
+        'dimensions'
       ),
     });
     return false;
   } else {
-    vis.clearErrors("dim-req");
+    vis.clearErrors('dim-req');
   }
 
   if (
@@ -90,34 +90,34 @@ export const handleErrors = (vis, resp, options) => {
     resp.fields.measure_like.length > options.max_measures
   ) {
     vis.addError({
-      group: "mes-req",
-      title: "Incompatible Measure Data",
+      group: 'mes-req',
+      title: 'Incompatible Measure Data',
       message: messageFromLimits(
         options.min_measures,
         options.max_measures,
-        "measures"
+        'measures'
       ),
     });
     return false;
   } else {
-    vis.clearErrors("mes-req");
+    vis.clearErrors('mes-req');
   }
   return true;
 };
 
-const drillingCallback = (event) => {
+const drillingCallback = event => {
   // eslint-disable-line
   const ds = event.currentTarget.dataset;
   const keys = Object.keys(ds);
   let links = [];
-  _.forEach(keys, (key) => {
-    const [k, i] = key.split("-");
+  _.forEach(keys, key => {
+    const [k, i] = key.split('-');
     if (!links[i]) {
       links[i] = {};
     }
     links[i][k] = ds[key];
   });
-  LookerCharts.Utils.openDrillMenu({ links, event });
+  LookerCharts.Utils.openDrillMenu({links, event});
 };
 
 // Attempt to display in this order: HTML/drill -> rendered -> value
@@ -148,7 +148,7 @@ export const displayData = (cell, formattedValue) => {
     );
   } else if (cell.html) {
     formattedCell = LookerCharts.Utils.htmlForCell(cell).replace(
-      "<a ",
+      '<a ',
       '<a className="drillable-link" '
     );
   } else {
@@ -168,7 +168,7 @@ const addLight = function (color, amount) {
 };
 
 export const lighten = (color, amount) => {
-  color = color.indexOf("#") >= 0 ? color.substring(1, color.length) : color;
+  color = color.indexOf('#') >= 0 ? color.substring(1, color.length) : color;
   amount = parseInt((255 * amount) / 100);
   return (color = `#${addLight(color.substring(0, 2), amount)}${addLight(
     color.substring(2, 4),
@@ -184,7 +184,7 @@ const subtractLight = function (color, amount) {
 };
 
 export const darken = (color, amount) => {
-  color = color.indexOf("#") >= 0 ? color.substring(1, color.length) : color;
+  color = color.indexOf('#') >= 0 ? color.substring(1, color.length) : color;
   amount = parseInt((255 * amount) / 100);
   return (color = `#${subtractLight(
     color.substring(0, 2),
