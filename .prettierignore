@@ -1,2 +1,3 @@
 /multiple_value.js
-node_modules/
+node_modules
+yarn.lock/
