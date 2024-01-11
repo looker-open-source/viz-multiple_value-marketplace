@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "prepare": "husky install",
-    "build": "env NODE_OPTIONS='--openssl-legacy-provider' webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
+    "build:legacy": "env NODE_OPTIONS='--openssl-legacy-provider' webpack --config webpack.config.js",
     "start": "webpack-dev-server --open",
     "watch": "webpack-dev-server --watch --progress",
     "format": "prettier --ignore-path .prettierignore --write '**/*.js'",

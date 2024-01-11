@@ -19,9 +19,7 @@ var webpackConfig = {
   },
   output: {
     filename: '[name].js',
-    path: __dirname,
-    library: '[name]',
-    libraryTarget: 'umd',
+    path: path.join(path.resolve(__dirname), '/dist'),
   },
   module: {
     rules: [
