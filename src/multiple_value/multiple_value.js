@@ -161,8 +161,7 @@ class MultipleValue extends React.PureComponent {
             return window.alert(
               'Comparison point can not be zero. Adjust the value to continue'
             );
-          }
-          if (compDataPoint) {
+          } else {
             progressPerc = Math.round(
               (dataPoint.value / compDataPoint.value) * 100
             );
