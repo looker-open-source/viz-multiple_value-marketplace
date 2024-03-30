@@ -81,7 +81,7 @@ looker.plugins.visualizations.add({
       };
     });
 
-    const options = Object.assign({}, baseOptions);
+    const options = Object.assign({}, PLOT_CONFIG);
 
     dataPoints.forEach((dataPoint, index) => {
       //Style -- apply to all
