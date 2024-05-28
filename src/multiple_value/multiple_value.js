@@ -164,9 +164,17 @@ class MultipleValue extends React.PureComponent {
             percChange = progressPerc - 100;
             valueChange = dataPoint.value - compDataPoint.value;
           } else {
-            return window.alert(
-              'Comparison point can not be zero. Adjust the value to continue'
-            );
+            return (
+              <DataPoint
+                  titlePlacement={config[`title_placement_${dataPoint.name}`]}
+                >
+                <DataPointTitle
+                  color={config[`style_${dataPoint.name}`]}
+                  >
+                  {'Comparison point can not be zero. Adjust the value to continue'}
+                </DataPointTitle>
+              </DataPoint>
+            )
           }
           return (
             <>
