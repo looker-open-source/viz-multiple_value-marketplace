@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.0.1...v1.0.2) (2024-06-04)
+
+
+### Bug Fixes
+
+* division by zero error ([#33](https://github.com/looker-open-source/viz-multiple_value-marketplace/issues/33)) ([0621987](https://github.com/looker-open-source/viz-multiple_value-marketplace/commit/062198725f8ea855830b20e2f554351819bfcea3))
+
 ## [1.0.1](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.0.0...v1.0.1) (2024-04-26)
 
 
