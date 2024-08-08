@@ -4,6 +4,7 @@ import isEqual from 'lodash/isEqual';
 import MultipleValue from './multiple_value';
 import {formatValue} from '../functions/number_date_format';
 import {PLOT_CONFIG} from '../constants/plot_config';
+import {addBaseTagToHeadElement} from '../functions/add_base_element_to_head';
 
 let currentOptions = {};
 let currentConfig = {};
@@ -21,6 +22,7 @@ looker.plugins.visualizations.add({
   },
   updateAsync: function (data, element, config, queryResponse, details, done) {
     this.clearErrors();
+    addBaseTagToHeadElement(document);
 
     const measures = [].concat(
       queryResponse.fields.dimensions,
@@ -81,7 +83,7 @@ looker.plugins.visualizations.add({
       };
     });
 
-    const options = Object.assign({}, baseOptions);
+    const options = Object.assign({}, PLOT_CONFIG);
 
     dataPoints.forEach((dataPoint, index) => {
       //Style -- apply to all
