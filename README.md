@@ -1,5 +1,7 @@
 # Multiple Value Visualization
 
+**This is not an officially supported Google product.**
+
 ### What if I find an error or want to suggest improvements?
 
 We welcome your contributions to this open source visualization with a pull request. Please reach out to Google Cloud support to report an error or suggest an improvement. You can also extend this visualization for your own use case.
