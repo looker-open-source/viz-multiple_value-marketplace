@@ -156,16 +156,8 @@ class MultipleValue extends React.PureComponent {
       >
         {data.map((dataPoint, index) => {
           const compDataPoint = dataPoint.comparison;
-          let progressPerc;
-          let percChange;
-          let valueChange;
           if (compDataPoint < 0 || compDataPoint > 0) {
             display = false;
-            progressPerc = Math.round(
-              (dataPoint.value / compDataPoint.value) * 100
-            );
-            percChange = progressPerc - 100;
-            valueChange = dataPoint.value - compDataPoint.value;
           } else if (compDataPoint === 0 || compDataPoint === null) {
             display = true;
             message = (
@@ -203,18 +195,16 @@ class MultipleValue extends React.PureComponent {
                     {dataPoint.html
                       ? ReactHtmlParser(DOMPurify.sanitize(dataPoint.html))
                       : dataPoint.formattedValue}
+                      
                   </DataPointValue>
                 </DataPoint>
-                {!compDataPoint ? null : (
+                {!compDataPoint ? null | !compDataPoint == undefined : (
                   <ComparisonDataPoint
                     config={config}
                     compDataPoint={compDataPoint}
                     dataPoint={dataPoint}
-                    percChange={percChange}
-                    valueChange={valueChange}
-                    progressPerc={progressPerc}
                     handleClick={this.handleClick}
-                  />
+                    />
                 )}
               </DataPointGroup>
               {config.dividers &&
