@@ -1,8 +1,10 @@
-import React, { PureComponent, useState } from "react";
+import React, {  } from "react";
 import styled from 'styled-components'
 // @ts-ignore
-import {formatType, lighten} from '../functions/common'
+import {lighten} from '../functions/common';
 import SSF from "ssf";
+// @ts-ignore
+import {getProgressPerc, getPercChange, getValueChange} from '../functions/comparison_data_point';
 
 let ComparisonDataPointGroup = styled.div`
   flex: 1;
@@ -105,10 +107,9 @@ export const ComparisonDataPoint: React.FC<{
   handleClick: (i: any, j: any)=>{},
 }> = ({ config, compDataPoint, dataPoint, handleClick }) => {
 
-  let progressPerc = Math.round(
-    (dataPoint.value / compDataPoint?.value) * 100);
-  let percChange = progressPerc - 100;
-  let valueChange = dataPoint.value - compDataPoint?.value;
+  let progressPerc = getProgressPerc(dataPoint, compDataPoint);
+  let percChange = getPercChange(progressPerc);
+  let valueChange = getValueChange(dataPoint, compDataPoint);
 
   function tryFormatting(formatString: string, value: number, defaultString: string) {
     try {

@@ -144,8 +144,6 @@ class MultipleValue extends React.PureComponent {
   };
 
   checkData = (compDataPoint) => {
-    console.log({compDataPoint})
-    console.log('result', !compDataPoint | typeof !compDataPoint === 'undefined')
     return !compDataPoint | typeof !compDataPoint === 'undefined'
   }
 
