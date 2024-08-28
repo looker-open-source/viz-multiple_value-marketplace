@@ -143,6 +143,12 @@ class MultipleValue extends React.PureComponent {
     });
   };
 
+  checkData = (compDataPoint) => {
+    console.log({compDataPoint})
+    console.log('result', !compDataPoint | typeof !compDataPoint === 'undefined')
+    return !compDataPoint | typeof !compDataPoint === 'undefined'
+  }
+
   render() {
     const { config, data } = this.props;
     let message;
@@ -198,7 +204,7 @@ class MultipleValue extends React.PureComponent {
                       
                   </DataPointValue>
                 </DataPoint>
-                {!compDataPoint ? null | !compDataPoint == undefined : (
+                {this.checkData(compDataPoint) ? null : (
                   <ComparisonDataPoint
                     config={config}
                     compDataPoint={compDataPoint}
