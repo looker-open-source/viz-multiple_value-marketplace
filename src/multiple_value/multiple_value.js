@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { ComparisonDataPoint } from './ComparisonDataPoint';
+import {ComparisonDataPoint} from './ComparisonDataPoint';
 import ReactHtmlParser from 'react-html-parser';
 import DOMPurify from 'dompurify';
 
@@ -115,13 +115,13 @@ class MultipleValue extends React.PureComponent {
   handleClick = (cell, event) => {
     cell.link !== undefined
       ? LookerCharts.Utils.openDrillMenu({
-        links: cell.link,
-        event: event,
-      })
+          links: cell.link,
+          event: event,
+        })
       : LookerCharts.Utils.openDrillMenu({
-        links: [],
-        event: event,
-      });
+          links: [],
+          event: event,
+        });
   };
 
   recalculateSizing = () => {
@@ -143,12 +143,12 @@ class MultipleValue extends React.PureComponent {
     });
   };
 
-  checkData = (compDataPoint) => {
-    return !compDataPoint | typeof !compDataPoint === 'undefined'
-  }
+  checkData = compDataPoint => {
+    return !compDataPoint | (typeof !compDataPoint === 'undefined');
+  };
 
   render() {
-    const { config, data } = this.props;
+    const {config, data} = this.props;
     let message;
     let display = false;
 
@@ -156,7 +156,7 @@ class MultipleValue extends React.PureComponent {
       <DataPointsWrapper
         layout={this.getLayout()}
         font={config['grouping_font']}
-        style={{ fontSize: `${this.state.fontSize}em` }}
+        style={{fontSize: `${this.state.fontSize}em`}}
       >
         {data.map((dataPoint, index) => {
           const compDataPoint = dataPoint.comparison;
@@ -166,9 +166,11 @@ class MultipleValue extends React.PureComponent {
             display = true;
             message = (
               <a>
-                {'Comparison point can not be zero. Adjust the value to continue.'}
+                {
+                  'Comparison point can not be zero. Adjust the value to continue.'
+                }
               </a>
-            )
+            );
           }
           return (
             <>
@@ -199,7 +201,6 @@ class MultipleValue extends React.PureComponent {
                     {dataPoint.html
                       ? ReactHtmlParser(DOMPurify.sanitize(dataPoint.html))
                       : dataPoint.formattedValue}
-                      
                   </DataPointValue>
                 </DataPoint>
                 {this.checkData(compDataPoint) ? null : (
@@ -208,7 +209,7 @@ class MultipleValue extends React.PureComponent {
                     compDataPoint={compDataPoint}
                     dataPoint={dataPoint}
                     handleClick={this.handleClick}
-                    />
+                  />
                 )}
               </DataPointGroup>
               {config.dividers &&
