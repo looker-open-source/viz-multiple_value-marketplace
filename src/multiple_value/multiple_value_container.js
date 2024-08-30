@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import isEqual from 'lodash/isEqual';
 import MultipleValue from './multiple_value';
-import {formatValue} from '../functions/number_date_format';
+import {formatValue} from '../lib/number_date_format';
 import {PLOT_CONFIG} from '../constants/plot_config';
-import {addBaseTagToHeadElement} from '../functions/add_base_element_to_head';
+import {addBaseTagToHeadElement} from '../lib/add_base_element_to_head';
 
 let currentOptions = {};
 let currentConfig = {};
