@@ -2,7 +2,7 @@ import {
   getProgressPerc,
   getPercChange,
   getValueChange,
-} from '../functions/comparison_data_point';
+} from '../lib/comparison_data_point';
 
 const dataPoint = {value: 100};
 const compDataPoint = {value: 20};

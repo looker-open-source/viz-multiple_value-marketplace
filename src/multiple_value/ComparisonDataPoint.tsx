@@ -1,10 +1,10 @@
 import React, {  } from "react";
 import styled from 'styled-components'
 // @ts-ignore
-import {lighten} from '../functions/common';
+import {lighten} from '../lib/common';
 import SSF from "ssf";
 // @ts-ignore
-import {getProgressPerc, getPercChange, getValueChange} from '../functions/comparison_data_point';
+import {getProgressPerc, getPercChange, getValueChange} from '../lib/comparison_data_point';
 
 let ComparisonDataPointGroup = styled.div`
   flex: 1;
