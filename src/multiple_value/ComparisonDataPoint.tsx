@@ -1,8 +1,10 @@
-import React, { PureComponent, useState } from "react";
+import React, {  } from "react";
 import styled from 'styled-components'
 // @ts-ignore
-import {formatType, lighten} from '../functions/common'
+import {lighten} from '../lib/common';
 import SSF from "ssf";
+// @ts-ignore
+import {getProgressPerc, getPercChange, getValueChange} from '../lib/comparison_data_point';
 
 let ComparisonDataPointGroup = styled.div`
   flex: 1;
@@ -102,11 +104,12 @@ export const ComparisonDataPoint: React.FC<{
   config: any,
   compDataPoint: any,
   dataPoint: any,
-  percChange: number,
-  valueChange: number,
-  progressPerc: number,
   handleClick: (i: any, j: any)=>{},
-}> = ({ config, compDataPoint, dataPoint, percChange, valueChange, progressPerc, handleClick }) => {
+}> = ({ config, compDataPoint, dataPoint, handleClick }) => {
+
+  let progressPerc = getProgressPerc(dataPoint, compDataPoint);
+  let percChange = getPercChange(progressPerc);
+  let valueChange = getValueChange(dataPoint, compDataPoint);
 
   function tryFormatting(formatString: string, value: number, defaultString: string) {
     try {
@@ -119,7 +122,6 @@ export const ComparisonDataPoint: React.FC<{
 
   return (
     <ComparisonDataPointGroup>
-
     {config[`comparison_style_${compDataPoint.name}`] !== 'percentage_change' ? null : (
       <ComparisonPercentageChange data-value={percChange} onClick={() => { handleClick(compDataPoint, event) }}>
         {percChange >= 0 ? <UpArrow pos={config[`pos_is_bad_${compDataPoint.name}`]}/> : <DownArrow pos={config[`pos_is_bad_${compDataPoint.name}`]}/>}
@@ -129,7 +131,7 @@ export const ComparisonDataPoint: React.FC<{
     {config[`comparison_style_${compDataPoint.name}`] !== 'value_change' ? null : (
       <ComparisonPercentageChange data-value={valueChange} onClick={() => { handleClick(compDataPoint, event) }}>
         {valueChange >= 0 ? <UpArrow pos={config[`pos_is_bad_${compDataPoint.name}`]}/> : <DownArrow pos={config[`pos_is_bad_${compDataPoint.name}`]}/>}
-        {valueChange.toLocaleString('en-US')}
+        {valueChange?.toLocaleString('en-US')}
       </ComparisonPercentageChange>
     )}
 
