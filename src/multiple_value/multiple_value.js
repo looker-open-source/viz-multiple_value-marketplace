@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { ComparisonDataPoint } from './ComparisonDataPoint';
+import {ComparisonDataPoint} from './ComparisonDataPoint';
 import ReactHtmlParser from 'react-html-parser';
 import DOMPurify from 'dompurify';
 
@@ -115,13 +115,13 @@ class MultipleValue extends React.PureComponent {
   handleClick = (cell, event) => {
     cell.link !== undefined
       ? LookerCharts.Utils.openDrillMenu({
-        links: cell.link,
-        event: event,
-      })
+          links: cell.link,
+          event: event,
+        })
       : LookerCharts.Utils.openDrillMenu({
-        links: [],
-        event: event,
-      });
+          links: [],
+          event: event,
+        });
   };
 
   recalculateSizing = () => {
@@ -143,8 +143,12 @@ class MultipleValue extends React.PureComponent {
     });
   };
 
+  checkData = compDataPoint => {
+    return !compDataPoint | (typeof !compDataPoint === 'undefined');
+  };
+
   render() {
-    const { config, data } = this.props;
+    const {config, data} = this.props;
     let message;
     let display = false;
 
@@ -152,27 +156,21 @@ class MultipleValue extends React.PureComponent {
       <DataPointsWrapper
         layout={this.getLayout()}
         font={config['grouping_font']}
-        style={{ fontSize: `${this.state.fontSize}em` }}
+        style={{fontSize: `${this.state.fontSize}em`}}
       >
         {data.map((dataPoint, index) => {
           const compDataPoint = dataPoint.comparison;
-          let progressPerc;
-          let percChange;
-          let valueChange;
           if (compDataPoint < 0 || compDataPoint > 0) {
             display = false;
-            progressPerc = Math.round(
-              (dataPoint.value / compDataPoint.value) * 100
-            );
-            percChange = progressPerc - 100;
-            valueChange = dataPoint.value - compDataPoint.value;
           } else if (compDataPoint === 0 || compDataPoint === null) {
             display = true;
             message = (
               <a>
-                {'Comparison point can not be zero. Adjust the value to continue.'}
+                {
+                  'Comparison point can not be zero. Adjust the value to continue.'
+                }
               </a>
-            )
+            );
           }
           return (
             <>
@@ -205,14 +203,11 @@ class MultipleValue extends React.PureComponent {
                       : dataPoint.formattedValue}
                   </DataPointValue>
                 </DataPoint>
-                {!compDataPoint ? null : (
+                {this.checkData(compDataPoint) ? null : (
                   <ComparisonDataPoint
                     config={config}
                     compDataPoint={compDataPoint}
                     dataPoint={dataPoint}
-                    percChange={percChange}
-                    valueChange={valueChange}
-                    progressPerc={progressPerc}
                     handleClick={this.handleClick}
                   />
                 )}
