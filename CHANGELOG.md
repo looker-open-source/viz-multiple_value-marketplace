@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.0.2...v1.0.3) (2024-09-02)
+
+
+### Bug Fixes
+
+* **bug:** comparison as value change returns blank page b/342265977 ([#41](https://github.com/looker-open-source/viz-multiple_value-marketplace/issues/41)) ([1703572](https://github.com/looker-open-source/viz-multiple_value-marketplace/commit/170357238d5b39fdf276e0d1ea30bb3a3d3aa207))
+
 ## [1.0.2](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.0.1...v1.0.2) (2024-06-04)
 
 
