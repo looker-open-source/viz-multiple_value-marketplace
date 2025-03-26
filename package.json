@@ -22,7 +22,7 @@
     "css-loader": "^7.1.2",
     "d3": "^5.12.0",
     "d3-svg-legend": "^2.25.6",
-    "dompurify": "^2.5.4",
+    "dompurify": "^3.2.4",
     "js-yaml": "~3.13.1",
     "jsdom": "^11.11.0",
     "lodash": "^4.17.19",
