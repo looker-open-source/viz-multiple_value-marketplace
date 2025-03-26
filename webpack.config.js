@@ -1,6 +1,6 @@
 var path = require('path');
 
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 var webpackConfig = {
   mode: 'production',
@@ -48,8 +48,9 @@ var webpackConfig = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    fallback: {"buffer": false},
   },
-  plugins: [new UglifyJSPlugin()],
+  plugins: [new TerserPlugin()],
   stats: {},
 };
 
