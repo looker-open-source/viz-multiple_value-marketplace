@@ -136,7 +136,7 @@ export const ComparisonDataPoint: React.FC<{
     )}
 
     {config[`comparison_style_${compDataPoint.name}`] !== 'value' ? null : 
-    <ComparisonSimpleValue onClick={() => { handleClick(compDataPoint, event) }}>
+    <ComparisonSimpleValue onClick={(event) => { handleClick(compDataPoint, event) }}>
       {config[`comp_value_format_${compDataPoint.name}`] === "" ? compDataPoint.formattedValue : tryFormatting(config[`comp_value_format_${compDataPoint.name}`], compDataPoint.value, compDataPoint.formattedValue)}
     </ComparisonSimpleValue>}
 
