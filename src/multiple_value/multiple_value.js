@@ -113,6 +113,8 @@ class MultipleValue extends React.PureComponent {
   };
 
   handleClick = (cell, event) => {
+    event?.preventDefault();
+    event?.stopPropagation();
     cell.link !== undefined
       ? LookerCharts.Utils.openDrillMenu({
           links: cell.link,
@@ -193,7 +195,7 @@ class MultipleValue extends React.PureComponent {
                   )}
                   <DataPointValue
                     color={config[`style_${dataPoint.name}`]}
-                    onClick={() => {
+                    onClick={(event) => {
                       this.handleClick(dataPoint, event);
                     }}
                     layout={this.getLayout()}
