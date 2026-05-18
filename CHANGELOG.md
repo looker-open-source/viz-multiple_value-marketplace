@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.0.3...v1.0.4) (2026-05-04)
+
+
+### Bug Fixes
+
+* 502257203 blank tile after clicking link ([#97](https://github.com/looker-open-source/viz-multiple_value-marketplace/issues/97)) ([24f38be](https://github.com/looker-open-source/viz-multiple_value-marketplace/commit/24f38beed7d700fced71398105056d515eb05e67))
+
 ## [1.0.3](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.0.2...v1.0.3) (2024-09-02)
 
 

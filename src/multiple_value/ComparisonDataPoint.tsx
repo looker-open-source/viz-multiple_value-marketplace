@@ -123,20 +123,20 @@ export const ComparisonDataPoint: React.FC<{
   return (
     <ComparisonDataPointGroup>
     {config[`comparison_style_${compDataPoint.name}`] !== 'percentage_change' ? null : (
-      <ComparisonPercentageChange data-value={percChange} onClick={() => { handleClick(compDataPoint, event) }}>
+      <ComparisonPercentageChange data-value={percChange} onClick={(event) => { handleClick(compDataPoint, event) }}>
         {percChange >= 0 ? <UpArrow pos={config[`pos_is_bad_${compDataPoint.name}`]}/> : <DownArrow pos={config[`pos_is_bad_${compDataPoint.name}`]}/>}
         {percChange}%
       </ComparisonPercentageChange>
     )}
     {config[`comparison_style_${compDataPoint.name}`] !== 'value_change' ? null : (
-      <ComparisonPercentageChange data-value={valueChange} onClick={() => { handleClick(compDataPoint, event) }}>
+      <ComparisonPercentageChange data-value={valueChange} onClick={(event) => { handleClick(compDataPoint, event) }}>
         {valueChange >= 0 ? <UpArrow pos={config[`pos_is_bad_${compDataPoint.name}`]}/> : <DownArrow pos={config[`pos_is_bad_${compDataPoint.name}`]}/>}
         {valueChange?.toLocaleString('en-US')}
       </ComparisonPercentageChange>
     )}
 
     {config[`comparison_style_${compDataPoint.name}`] !== 'value' ? null : 
-    <ComparisonSimpleValue onClick={() => { handleClick(compDataPoint, event) }}>
+    <ComparisonSimpleValue onClick={(event) => { handleClick(compDataPoint, event) }}>
       {config[`comp_value_format_${compDataPoint.name}`] === "" ? compDataPoint.formattedValue : tryFormatting(config[`comp_value_format_${compDataPoint.name}`], compDataPoint.value, compDataPoint.formattedValue)}
     </ComparisonSimpleValue>}
 
@@ -148,7 +148,7 @@ export const ComparisonDataPoint: React.FC<{
           pct={()=>Math.min(progressPerc || 0, 100)}
         />
           {config[`comparison_show_label_${compDataPoint.name}`] === false ? null : (
-            <ComparisonProgressBarLabel><div onClick={() => { handleClick(compDataPoint, event) }}>
+            <ComparisonProgressBarLabel><div onClick={(event) => { handleClick(compDataPoint, event) }}>
               {config[`comparison_style_${compDataPoint.name}`] === 'calculate_progress' ? null :
                 <>
                   {`${progressPerc}% of ${config[`comp_value_format_${compDataPoint.name}`] === "" ? compDataPoint.formattedValue : tryFormatting(config[`comp_value_format_${compDataPoint.name}`], compDataPoint.value, compDataPoint.formattedValue)} `}
