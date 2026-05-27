@@ -2,7 +2,7 @@
   "label": "Multiple Value Visualization",
   "category_label": "Plug-ins",
   "branding": {
-    "image_uri": "https://marketplace-api.looker.com/visualization-screenshots/grouped_card_icon.png",
+    "image_uri": "https://static-a.cdn.looker.app/marketplace/visualization-screenshots/grouped_card_icon.png",
     "tagline": "Use the Multiple Value visualization to display and compare multiple measures across a single tile. This visualization can be arranged horizontally or vertically."
   },
 
