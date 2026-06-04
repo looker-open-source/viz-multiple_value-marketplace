@@ -1,3 +1,8 @@
+// © 2019 Google LLC.  All rights reserved.
+//
+// This software is subject to the Google Cloud Terms of Service, as
+// modified by the "General Software Terms" of the Google Cloud Service Specific Terms, available at: https://cloud.google.com/terms/service-terms.
+
 import {LOCALE_NUMBER_FORMATS} from '../constants/locale_formats_tags';
 import {addBaseTagToHeadElement} from '../functions/add_base_element_to_head';
 import {formatValue} from '../functions/number_date_format';
