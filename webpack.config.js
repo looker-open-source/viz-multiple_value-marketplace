@@ -18,6 +18,7 @@ var webpackConfig = {
     },
   },
   output: {
+    hashFunction: 'xxhash64',
     filename: 'bundle.js',
     path: path.join(path.resolve(__dirname), '/dist'),
   },
