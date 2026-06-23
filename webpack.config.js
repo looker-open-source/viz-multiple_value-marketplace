@@ -8,7 +8,7 @@ var webpackConfig = {
     multiple_value: './src/multiple_value/multiple_value_container.js',
   },
   devServer: {
-    contentBase: './dist',
+    static: { directory: './dist' },
     https: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -18,6 +18,7 @@ var webpackConfig = {
     },
   },
   output: {
+    hashFunction: 'sha256',
     filename: 'bundle.js',
     path: path.join(path.resolve(__dirname), '/dist'),
   },
