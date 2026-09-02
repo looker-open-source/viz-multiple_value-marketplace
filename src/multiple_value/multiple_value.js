@@ -200,7 +200,7 @@ class MultipleValue extends React.PureComponent {
                   )}
                   <DataPointValue
                     color={config[`style_${dataPoint.name}`]}
-                    onClick={(event) => {
+                    onClick={event => {
                       this.handleClick(dataPoint, event);
                     }}
                     layout={this.getLayout()}

@@ -38,7 +38,7 @@ looker.plugins.visualizations.add({
 
       if (data.length < 1) {
         this.addError({title: 'No Results'});
-        this.chart = renderBlankVisualization(element, () => {});
+        this.chart = renderBlankVisualization(element, done);
         return;
       }
 
@@ -47,6 +47,7 @@ looker.plugins.visualizations.add({
           title: 'No Measures',
           message: 'This chart requires measures',
         });
+        done();
         return;
       }
 
@@ -55,6 +56,7 @@ looker.plugins.visualizations.add({
           title: 'Pivoting not allowed',
           message: 'This visualization does not allow pivoting',
         });
+        done();
         return;
       }
 
@@ -64,6 +66,7 @@ looker.plugins.visualizations.add({
           message:
             'This visualization does not allow more than 10 data points to be selected',
         });
+        done();
         return;
       }
 
@@ -273,7 +276,8 @@ looker.plugins.visualizations.add({
 
       this.chart = ReactDOM.render(
         <MultipleValue config={config} data={fullValues} />,
-        element
+        element,
+        done
       );
     } catch (error) {
       console.error(error);
@@ -282,7 +286,6 @@ looker.plugins.visualizations.add({
       } catch (e) {
         console.error('Failed to add error', e);
       }
-    } finally {
       done();
     }
   },

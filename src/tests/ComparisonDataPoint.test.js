@@ -16,19 +16,19 @@ let progressPerc;
 describe('getProgressPerc', () => {
   test('should get correct percentage', () => {
     expect((progressPerc = getProgressPerc(dataPoint, compDataPoint))).toEqual(
-      '500'
+      500
     );
   });
 });
 
 describe('getPercChange', () => {
   test('should get correct percentage', () => {
-    expect(getPercChange(progressPerc)).toEqual('400');
+    expect(getPercChange(progressPerc)).toEqual(400);
   });
 });
 
 describe('getValueChange', () => {
   test('should get correct value', () => {
-    expect(getValueChange(dataPoint, compDataPoint)).toEqual('80');
+    expect(getValueChange(dataPoint, compDataPoint)).toEqual(80);
   });
 });
