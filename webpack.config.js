@@ -8,13 +8,14 @@ var webpackConfig = {
     multiple_value: './src/multiple_value/multiple_value_container.js',
   },
   devServer: {
-    static: { directory: './dist' },
-    https: true,
+    static: {directory: './dist'},
+    server: "https",
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers':
         'X-Requested-With, content-type, Authorization',
+      'Access-Control-Allow-Private-Network': 'true',
     },
   },
   output: {
@@ -49,7 +50,7 @@ var webpackConfig = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    fallback: {"buffer": false},
+    fallback: {buffer: false},
   },
   plugins: [new TerserPlugin()],
   stats: {},
