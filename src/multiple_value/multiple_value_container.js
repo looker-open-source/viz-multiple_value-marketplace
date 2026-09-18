@@ -86,7 +86,8 @@ looker.plugins.visualizations.add({
               : formatValue(
                   config[`value_format_${measure.name}`],
                   firstRow[measure.name].value,
-                  queryResponse.number_format
+                  queryResponse.number_format,
+                  LookerCharts.Utils.textForCell(firstRow[measure.name])
                 ),
           html: firstRow[measure.name].html,
         };
