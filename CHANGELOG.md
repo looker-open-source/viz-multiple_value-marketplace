@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.4.1...v1.4.2) (2026-09-11)
+
+
+### Bug Fixes
+
+* resolve Looker stalling by properly firing done() on early returns ([#125](https://github.com/looker-open-source/viz-multiple_value-marketplace/issues/125)) ([86be8b8](https://github.com/looker-open-source/viz-multiple_value-marketplace/commit/86be8b8d727c2632d8cec84977079a0f421fd480))
+
 ## [1.0.4](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.0.3...v1.0.4) (2026-05-04)
 
 
