@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.4.2...v1.4.3) (2026-10-06)
+
+
+### Bug Fixes
+
+* support multi-condition format strings in Explore UI ([#132](https://github.com/looker-open-source/viz-multiple_value-marketplace/issues/132)) ([ce3e23b](https://github.com/looker-open-source/viz-multiple_value-marketplace/commit/ce3e23bb280857c731ab347a46ded102bf1a331d))
+
 ## [1.4.2](https://github.com/looker-open-source/viz-multiple_value-marketplace/compare/v1.4.1...v1.4.2) (2026-09-11)
 
 
