@@ -3098,9 +3098,9 @@ domhandler@^2.3.0:
   dependencies:
     domelementtype "1"
 
-dompurify@^3.4.13:
-  version "3.4.14"
-  resolved "https://registry.npmjs.org/dompurify/-/dompurify-3.4.14.tgz"
+dompurify@^3.4.17:
+  version "3.4.17"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.4.17.tgz#074bbb24eaa419535ac19ffe7f663104b0e1543d"
   optionalDependencies:
     "@types/trusted-types" "^2.0.7"
 
